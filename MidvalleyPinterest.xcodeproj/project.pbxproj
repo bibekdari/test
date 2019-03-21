@@ -14,6 +14,8 @@
 		1FF1F2D32243D905005F1FBA /* MidvalleyPinterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2D22243D905005F1FBA /* MidvalleyPinterestTests.swift */; };
 		1FF1F2DE2243D905005F1FBA /* MidvalleyPinterestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2DD2243D905005F1FBA /* MidvalleyPinterestUITests.swift */; };
 		1FF1F2F32243DADF005F1FBA /* PinterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2F22243DADF005F1FBA /* PinterestViewController.swift */; };
+		1FF1F2F82243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2F62243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift */; };
+		1FF1F2F92243DBD0005F1FBA /* PinterestImageListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2F72243DBD0005F1FBA /* PinterestImageListCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		1FF1F2DD2243D905005F1FBA /* MidvalleyPinterestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidvalleyPinterestUITests.swift; sourceTree = "<group>"; };
 		1FF1F2DF2243D905005F1FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FF1F2F22243DADF005F1FBA /* PinterestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestViewController.swift; sourceTree = "<group>"; };
+		1FF1F2F62243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestImageListCollectionViewCell.swift; sourceTree = "<group>"; };
+		1FF1F2F72243DBD0005F1FBA /* PinterestImageListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PinterestImageListCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				1FF1F2C12243D904005F1FBA /* Pinterest.storyboard */,
+				1FF1F2F62243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift */,
+				1FF1F2F72243DBD0005F1FBA /* PinterestImageListCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FF1F2C82243D905005F1FBA /* LaunchScreen.storyboard in Resources */,
+				1FF1F2F92243DBD0005F1FBA /* PinterestImageListCollectionViewCell.xib in Resources */,
 				1FF1F2C52243D905005F1FBA /* Assets.xcassets in Resources */,
 				1FF1F2C32243D904005F1FBA /* Pinterest.storyboard in Resources */,
 			);
@@ -290,6 +297,7 @@
 			files = (
 				1FF1F2BE2243D904005F1FBA /* AppDelegate.swift in Sources */,
 				1FF1F2F32243DADF005F1FBA /* PinterestViewController.swift in Sources */,
+				1FF1F2F82243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
