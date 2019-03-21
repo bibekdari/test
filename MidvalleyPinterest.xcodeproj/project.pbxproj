@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1FF1F2BE2243D904005F1FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2BD2243D904005F1FBA /* AppDelegate.swift */; };
-		1FF1F2C02243D904005F1FBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2BF2243D904005F1FBA /* ViewController.swift */; };
-		1FF1F2C32243D904005F1FBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C12243D904005F1FBA /* Main.storyboard */; };
+		1FF1F2C02243D904005F1FBA /* PinterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2BF2243D904005F1FBA /* PinterestViewController.swift */; };
+		1FF1F2C32243D904005F1FBA /* Pinterest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C12243D904005F1FBA /* Pinterest.storyboard */; };
 		1FF1F2C52243D905005F1FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C42243D905005F1FBA /* Assets.xcassets */; };
 		1FF1F2C82243D905005F1FBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C62243D905005F1FBA /* LaunchScreen.storyboard */; };
 		1FF1F2D32243D905005F1FBA /* MidvalleyPinterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2D22243D905005F1FBA /* MidvalleyPinterestTests.swift */; };
@@ -36,8 +36,8 @@
 /* Begin PBXFileReference section */
 		1FF1F2BA2243D904005F1FBA /* MidvalleyPinterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidvalleyPinterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF1F2BD2243D904005F1FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1FF1F2BF2243D904005F1FBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1FF1F2C22243D904005F1FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1FF1F2BF2243D904005F1FBA /* PinterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestViewController.swift; sourceTree = "<group>"; };
+		1FF1F2C22243D904005F1FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pinterest.storyboard; sourceTree = "<group>"; };
 		1FF1F2C42243D905005F1FBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FF1F2C72243D905005F1FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF1F2C92243D905005F1FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,8 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				1FF1F2BD2243D904005F1FBA /* AppDelegate.swift */,
-				1FF1F2BF2243D904005F1FBA /* ViewController.swift */,
-				1FF1F2C12243D904005F1FBA /* Main.storyboard */,
+				1FF1F2BF2243D904005F1FBA /* PinterestViewController.swift */,
+				1FF1F2C12243D904005F1FBA /* Pinterest.storyboard */,
 				1FF1F2C42243D905005F1FBA /* Assets.xcassets */,
 				1FF1F2C62243D905005F1FBA /* LaunchScreen.storyboard */,
 				1FF1F2C92243D905005F1FBA /* Info.plist */,
@@ -231,7 +231,7 @@
 			files = (
 				1FF1F2C82243D905005F1FBA /* LaunchScreen.storyboard in Resources */,
 				1FF1F2C52243D905005F1FBA /* Assets.xcassets in Resources */,
-				1FF1F2C32243D904005F1FBA /* Main.storyboard in Resources */,
+				1FF1F2C32243D904005F1FBA /* Pinterest.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FF1F2C02243D904005F1FBA /* ViewController.swift in Sources */,
+				1FF1F2C02243D904005F1FBA /* PinterestViewController.swift in Sources */,
 				1FF1F2BE2243D904005F1FBA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,12 +293,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1FF1F2C12243D904005F1FBA /* Main.storyboard */ = {
+		1FF1F2C12243D904005F1FBA /* Pinterest.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1FF1F2C22243D904005F1FBA /* Base */,
 			);
-			name = Main.storyboard;
+			name = Pinterest.storyboard;
 			sourceTree = "<group>";
 		};
 		1FF1F2C62243D905005F1FBA /* LaunchScreen.storyboard */ = {
@@ -434,6 +434,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MidvalleyPinterest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,6 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MidvalleyPinterest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
