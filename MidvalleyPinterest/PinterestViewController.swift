@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PinterestViewController.swift
 //  MidvalleyPinterest
 //
 //  Created by bibek timalsina on 3/21/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PinterestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
