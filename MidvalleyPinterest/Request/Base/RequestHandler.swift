@@ -36,7 +36,7 @@ enum Response<T: Decodable> {
 protocol RequestHandler {
     var baseURLString: String {get}
     var snakeCaseDecoding: Bool {get}
-    @discardableResult func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> URLSessionTask?
+    @discardableResult func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> TaskManager.Task?
 }
 
 class RequestHandlerImpl: RequestHandler {
@@ -52,7 +52,7 @@ class RequestHandlerImpl: RequestHandler {
     }
     
     @discardableResult
-    func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> URLSessionTask? {
+    func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> TaskManager.Task? {
         // Set up the URL request
         let endpoint: String = baseURLString + slug
         guard let url = URL(string: endpoint) else {
