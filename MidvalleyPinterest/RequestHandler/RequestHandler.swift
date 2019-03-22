@@ -40,13 +40,15 @@ protocol RequestHandler {
 }
 
 class RequestHandlerImpl: RequestHandler {
-    
+
     let baseURLString: String
     let snakeCaseDecoding: Bool
+    let taskManager: TaskManager
     
-    init(baseURLString: String, snakeCaseDecoding: Bool = true) {
+    init(baseURLString: String, taskManager: TaskManager, snakeCaseDecoding: Bool = true) {
         self.baseURLString = baseURLString
         self.snakeCaseDecoding = snakeCaseDecoding
+        self.taskManager = taskManager
     }
     
     @discardableResult
@@ -57,39 +59,24 @@ class RequestHandlerImpl: RequestHandler {
             throw RequestError.cannotCreateURL
         }
         
-        let urlRequest = URLRequest(url: url)
-        
-        // set up the session
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        // make the request
-        let task = session.dataTask(with: urlRequest) {
-            (data, response, error) in
-            // check for any errors
-            guard error == nil else {
-                return completion(.error(error!))
-            }
-            
-            // check for data existance
-            guard let data = data else {
-                return completion(.error(ResponseError.noDataReceived))
-            }
-            
-            // parse the result and map to object
-            do {
-                let decoder = JSONDecoder()
-                if self.snakeCaseDecoding {
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return taskManager.request(url: url, completion: { (response) in
+            switch response {
+            case .success(let data):
+                // parse the result and map to object
+                do {
+                    let decoder = JSONDecoder()
+                    if self.snakeCaseDecoding {
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    }
+                    let model = try decoder.decode(T.self, from: data)
+                    completion(.success(model))
+                } catch  {
+                    completion(.error(error))
                 }
-                let model = try decoder.decode(T.self, from: data)
-                completion(.success(model))
-            } catch  {
+            case .error(let error):
                 completion(.error(error))
             }
-        }
-        task.resume()
-        return task
+        })
     }
-    
+
 }
