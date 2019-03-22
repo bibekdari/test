@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct PostContainer: Decodable {
-    let posts: [Post]
-}
-
 protocol PostsAPI {
     var requestHandler: RequestHandler? {get}
 }
@@ -19,13 +15,13 @@ protocol PostsAPI {
 extension PostsAPI {
     
     func getPosts(success: @escaping ([Post]) -> (), failure: @escaping (Error) -> ()) throws {
-        let slug = "raw/wgkJgazE"
-        _ = try requestHandler?.request(slug: slug) { (response: Response<PostContainer>) in
+        let slug = "/raw/wgkJgazE"
+        _ = try requestHandler?.request(slug: slug) { (response: Response<[Post]>) in
             switch response {
             case .error(let error):
                 failure(error)
             case .success(let model):
-                success(model.posts)
+                success(model)
             }
         }
     }
