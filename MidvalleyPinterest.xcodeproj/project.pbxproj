@@ -19,6 +19,8 @@
 		1FF1F2FC2243F0FF005F1FBA /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2FB2243F0FF005F1FBA /* RequestHandler.swift */; };
 		1FF1F2FE2243FAB6005F1FBA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2FD2243FAB6005F1FBA /* Post.swift */; };
 		1FF1F3002243FC9A005F1FBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2FF2243FC9A005F1FBA /* User.swift */; };
+		1FF1F3022243FD35005F1FBA /* PostsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F3012243FD35005F1FBA /* PostsAPI.swift */; };
+		1FF1F3042244CD35005F1FBA /* PinterestImageListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F3032244CD35005F1FBA /* PinterestImageListConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		1FF1F2FB2243F0FF005F1FBA /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		1FF1F2FD2243FAB6005F1FBA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1FF1F2FF2243FC9A005F1FBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1FF1F3012243FD35005F1FBA /* PostsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAPI.swift; sourceTree = "<group>"; };
+		1FF1F3032244CD35005F1FBA /* PinterestImageListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestImageListConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 				1FF1F2EF2243DADF005F1FBA /* Controller */,
 				1FF1F2F02243DADF005F1FBA /* Model */,
 				1FF1F2F12243DADF005F1FBA /* View */,
+				1FF1F3032244CD35005F1FBA /* PinterestImageListConfigurator.swift */,
 			);
 			path = PinterestImageList;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				1FF1F2FB2243F0FF005F1FBA /* RequestHandler.swift */,
+				1FF1F3012243FD35005F1FBA /* PostsAPI.swift */,
 			);
 			path = RequestHandler;
 			sourceTree = "<group>";
@@ -314,10 +320,12 @@
 			files = (
 				1FF1F2BE2243D904005F1FBA /* AppDelegate.swift in Sources */,
 				1FF1F2F32243DADF005F1FBA /* PinterestViewController.swift in Sources */,
+				1FF1F3022243FD35005F1FBA /* PostsAPI.swift in Sources */,
 				1FF1F3002243FC9A005F1FBA /* User.swift in Sources */,
 				1FF1F2F82243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift in Sources */,
 				1FF1F2FC2243F0FF005F1FBA /* RequestHandler.swift in Sources */,
 				1FF1F2FE2243FAB6005F1FBA /* Post.swift in Sources */,
+				1FF1F3042244CD35005F1FBA /* PinterestImageListConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
