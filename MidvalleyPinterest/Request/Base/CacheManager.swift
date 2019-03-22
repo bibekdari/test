@@ -43,6 +43,8 @@ class CacheManager {
             freeCache(ofSize: dataSize)
         }
         
+        currentCacheSize += dataSize
+        
         cache[key] = (data, Date(), dataSize)
     }
     
