@@ -63,6 +63,7 @@ class CacheManager {
         for object in sortedCache {
             removingSize += object.value.size
             if removingSize >= freeSize {
+                keysToRemove.append(object.key)
                 break
             }
             keysToRemove.append(object.key)
