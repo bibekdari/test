@@ -10,15 +10,21 @@ import UIKit
 
 class PinterestViewController: UIViewController {
     
+    var requestHandler: RequestHandler?
+    
     private weak var collectionView: UICollectionView!
+    private var posts: [Post] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        addRefreshControl()
+        getData()
     }
     
     private func setupCollectionView() {
-        let collectionView = UICollectionView()
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(collectionView)
@@ -31,6 +37,39 @@ class PinterestViewController: UIViewController {
         collectionView.register(UINib(nibName: "PinterestImageListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PinterestImageListCollectionViewCell")
         
         collectionView.dataSource = self
+        
+        self.collectionView = collectionView
+    }
+    
+    private func addRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+    }
+    
+    @objc private func refreshData() {
+        posts = []
+        getData()
+    }
+    
+    private func getData() {
+        do {
+            try getPosts(success: { [weak self] (posts) in
+                self?.posts = posts
+                self?.collectionView.reloadData()
+            }) { [weak self] (error) in
+                self?.showError(error)
+            }
+        }catch {
+            self.showError(error)
+        }
+    }
+    
+    private func showError(_ error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 
 }
@@ -51,3 +90,6 @@ extension PinterestViewController: UICollectionViewDataSource {
     
 }
 
+extension PinterestViewController: PostsAPI {
+    
+}
