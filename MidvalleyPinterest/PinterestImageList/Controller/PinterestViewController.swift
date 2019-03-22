@@ -101,6 +101,12 @@ extension PinterestViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PinterestImageListCollectionViewCell", for: indexPath) as! PinterestImageListCollectionViewCell
+        let post = posts[indexPath.row]
+        if let url = URL(string: post.urls.thumb) {
+            cell.imageView.setImage(from: url, placeHolderImage: nil)
+        }else {
+            cell.imageView.image = nil
+        }
         return cell
     }
     
