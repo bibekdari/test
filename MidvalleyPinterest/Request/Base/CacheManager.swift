@@ -10,7 +10,7 @@ import Foundation
 
 class CacheManager {
     
-    static let shared = CacheManager(ofSize: 104857600)
+    static let `default` = CacheManager(ofSize: 104857600)
     
     var size: Int
     private var cache: [String: (data: Data, lastUsedDate: Date, size: Int)] = [:]

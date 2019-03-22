@@ -45,7 +45,7 @@ class RequestHandlerImpl: RequestHandler {
     let snakeCaseDecoding: Bool
     let taskManager: TaskManager
     
-    init(baseURLString: String, taskManager: TaskManager, snakeCaseDecoding: Bool = true) {
+    init(baseURLString: String, taskManager: TaskManager = .default, snakeCaseDecoding: Bool = true) {
         self.baseURLString = baseURLString
         self.snakeCaseDecoding = snakeCaseDecoding
         self.taskManager = taskManager

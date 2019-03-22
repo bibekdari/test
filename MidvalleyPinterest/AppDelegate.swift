@@ -17,11 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let cacheManager = CacheManager.shared
+        let cacheManager = CacheManager.default
         cacheManager.size = 104857600
-        let taskManager = TaskManager(withCacheManager: cacheManager)
         
-        window?.rootViewController = PinterestImageListConfigurator().configuredViewController(with: taskManager)
+        window?.rootViewController = PinterestImageListConfigurator().configuredViewController()
         return true
     }
 

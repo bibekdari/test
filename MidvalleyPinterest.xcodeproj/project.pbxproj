@@ -183,7 +183,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		1FF1F2FA2243F0F3005F1FBA /* RequestHandler */ = {
+		1FF1F2FA2243F0F3005F1FBA /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				1FF1F2FB2243F0FF005F1FBA /* RequestHandler.swift */,
@@ -191,14 +191,14 @@
 				1FF1F3052244E524005F1FBA /* TaskManager.swift */,
 				1FF1F309224501F4005F1FBA /* CacheManager.swift */,
 			);
-			path = RequestHandler;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		1FF1F30D224507E9005F1FBA /* Request */ = {
 			isa = PBXGroup;
 			children = (
 				1FF1F30E224507FA005F1FBA /* extensions */,
-				1FF1F2FA2243F0F3005F1FBA /* RequestHandler */,
+				1FF1F2FA2243F0F3005F1FBA /* Base */,
 			);
 			path = Request;
 			sourceTree = "<group>";

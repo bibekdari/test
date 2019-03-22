@@ -15,6 +15,8 @@ enum DataResponse {
 
 class TaskManager {
     
+    static let `default` = TaskManager(withCacheManager: CacheManager.default)
+    
     let cacheManager: CacheManager
     
     init(withCacheManager cacheManager: CacheManager) {
