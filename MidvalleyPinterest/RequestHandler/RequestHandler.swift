@@ -8,39 +8,45 @@
 
 import Foundation
 
-class RequestHandler {
-    
-    enum RequestError: Error {
-        case cannotCreateURL
-        var localizedDescription: String {
-            switch self {
-            case .cannotCreateURL:
-                return "Cannot create URL"
-            }
+enum RequestError: Error {
+    case cannotCreateURL
+    var localizedDescription: String {
+        switch self {
+        case .cannotCreateURL:
+            return "Cannot create URL"
         }
     }
-    
-    enum ResponseError: Error {
-        case noDataReceived
-        var localizedDescription: String {
-            switch self {
-            case .noDataReceived:
-                return "No data received."
-            }
+}
+
+enum ResponseError: Error {
+    case noDataReceived
+    var localizedDescription: String {
+        switch self {
+        case .noDataReceived:
+            return "No data received."
         }
     }
+}
+
+enum Response<T: Decodable> {
+    case error(Error)
+    case success(T)
+}
+
+protocol RequestHandler {
+    var baseURLString: String {get}
+    init(baseURLString: String)
+    @discardableResult func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> URLSessionTask?
+}
+
+class RequestHandlerImpl: RequestHandler {
+    var baseURLString: String
     
-    enum Response<T: Decodable> {
-        case error(Error)
-        case success(T)
-    }
-    
-    let baseURLString: String
-    
-    init(baseURLString: String) {
+    required init(baseURLString: String) {
         self.baseURLString = baseURLString
     }
-
+    
+    @discardableResult
     func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> URLSessionTask? {
         // Set up the URL request
         let endpoint: String = baseURLString + slug
@@ -78,5 +84,5 @@ class RequestHandler {
         task.resume()
         return task
     }
-
+    
 }
