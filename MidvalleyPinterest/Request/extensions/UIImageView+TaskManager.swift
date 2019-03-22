@@ -16,7 +16,9 @@ extension UIImageView {
             switch response {
             case .success(let data):
                 let image = UIImage(data: data)
-                self?.image = image
+                DispatchQueue.main.async {
+                    self?.image = image
+                }
             case .error(_): break
             }
         }
