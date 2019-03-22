@@ -10,10 +10,11 @@ import UIKit
 
 class PinterestImageListConfigurator {
     
-    func configuredViewController() -> PinterestViewController? {
+    func configuredViewController(with taskManager: TaskManager) -> PinterestViewController? {
         let sb = UIStoryboard(name: "Pinterest", bundle: nil)
         let viewController = sb.instantiateInitialViewController() as? PinterestViewController
-        viewController?.requestHandler = RequestHandlerImpl(baseURLString: "http://pastebin.com")
+        viewController?.requestHandler = RequestHandlerImpl(baseURLString: "http://pastebin.com", taskManager: taskManager)
+        
         return viewController
     }
     
