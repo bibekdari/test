@@ -24,6 +24,7 @@ class PinterestViewController: UIViewController {
     
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
+        
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -37,8 +38,10 @@ class PinterestViewController: UIViewController {
         collectionView.register(UINib(nibName: "PinterestImageListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PinterestImageListCollectionViewCell")
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         collectionView.alwaysBounceVertical = true
+        collectionView.backgroundColor = .white
         
         self.collectionView = collectionView
     }
@@ -108,6 +111,17 @@ extension PinterestViewController: UICollectionViewDataSource {
             cell.imageView.image = nil
         }
         return cell
+    }
+    
+}
+
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension PinterestViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width)
     }
     
 }
