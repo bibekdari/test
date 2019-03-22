@@ -21,6 +21,8 @@
 		1FF1F3002243FC9A005F1FBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2FF2243FC9A005F1FBA /* User.swift */; };
 		1FF1F3022243FD35005F1FBA /* PostsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F3012243FD35005F1FBA /* PostsAPI.swift */; };
 		1FF1F3042244CD35005F1FBA /* PinterestImageListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F3032244CD35005F1FBA /* PinterestImageListConfigurator.swift */; };
+		1FF1F3062244E524005F1FBA /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F3052244E524005F1FBA /* TaskManager.swift */; };
+		1FF1F30A224501F4005F1FBA /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F309224501F4005F1FBA /* CacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		1FF1F2FF2243FC9A005F1FBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1FF1F3012243FD35005F1FBA /* PostsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAPI.swift; sourceTree = "<group>"; };
 		1FF1F3032244CD35005F1FBA /* PinterestImageListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestImageListConfigurator.swift; sourceTree = "<group>"; };
+		1FF1F3052244E524005F1FBA /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		1FF1F309224501F4005F1FBA /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,8 @@
 			children = (
 				1FF1F2FB2243F0FF005F1FBA /* RequestHandler.swift */,
 				1FF1F3012243FD35005F1FBA /* PostsAPI.swift */,
+				1FF1F3052244E524005F1FBA /* TaskManager.swift */,
+				1FF1F309224501F4005F1FBA /* CacheManager.swift */,
 			);
 			path = RequestHandler;
 			sourceTree = "<group>";
@@ -318,11 +324,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF1F3062244E524005F1FBA /* TaskManager.swift in Sources */,
 				1FF1F2BE2243D904005F1FBA /* AppDelegate.swift in Sources */,
 				1FF1F2F32243DADF005F1FBA /* PinterestViewController.swift in Sources */,
 				1FF1F3022243FD35005F1FBA /* PostsAPI.swift in Sources */,
 				1FF1F3002243FC9A005F1FBA /* User.swift in Sources */,
 				1FF1F2F82243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift in Sources */,
+				1FF1F30A224501F4005F1FBA /* CacheManager.swift in Sources */,
 				1FF1F2FC2243F0FF005F1FBA /* RequestHandler.swift in Sources */,
 				1FF1F2FE2243FAB6005F1FBA /* Post.swift in Sources */,
 				1FF1F3042244CD35005F1FBA /* PinterestImageListConfigurator.swift in Sources */,
