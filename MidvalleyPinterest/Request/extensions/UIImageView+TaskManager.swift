@@ -12,7 +12,7 @@ extension UIImageView {
     
     func setImage(from url: URL, placeHolderImage: UIImage?) {
         self.image = placeHolderImage
-        TaskManager.default.request(url: url) { [weak self] (response) in
+        TaskManager.default.download(url: url) { [weak self] (response) in
             switch response {
             case .success(let data):
                 let image = UIImage(data: data)
