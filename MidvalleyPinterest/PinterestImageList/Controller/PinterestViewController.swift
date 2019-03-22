@@ -24,13 +24,13 @@ class PinterestViewController: UIViewController {
     
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(collectionView)
         
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
@@ -38,12 +38,15 @@ class PinterestViewController: UIViewController {
         
         collectionView.dataSource = self
         
+        collectionView.alwaysBounceVertical = true
+        
         self.collectionView = collectionView
     }
     
     private func addRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
         collectionView.refreshControl = refreshControl
     }
     
@@ -56,9 +59,22 @@ class PinterestViewController: UIViewController {
         do {
             try getPosts(success: { [weak self] (posts) in
                 self?.posts = posts
-                self?.collectionView.reloadData()
+                // reload view
+                DispatchQueue.main.async {
+                    if let refreshControl = self?.collectionView.refreshControl,
+                        refreshControl.isRefreshing {
+                        refreshControl.endRefreshing()
+                    }
+                    self?.collectionView.reloadData()
+                }
             }) { [weak self] (error) in
-                self?.showError(error)
+                DispatchQueue.main.async {
+                    if let refreshControl = self?.collectionView.refreshControl,
+                        refreshControl.isRefreshing {
+                        refreshControl.endRefreshing()
+                    }
+                    self?.showError(error)
+                }
             }
         }catch {
             self.showError(error)
@@ -80,7 +96,7 @@ class PinterestViewController: UIViewController {
 extension PinterestViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
