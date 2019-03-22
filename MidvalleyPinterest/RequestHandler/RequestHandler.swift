@@ -35,15 +35,18 @@ enum Response<T: Decodable> {
 
 protocol RequestHandler {
     var baseURLString: String {get}
-    init(baseURLString: String)
+    var snakeCaseDecoding: Bool {get}
     @discardableResult func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> URLSessionTask?
 }
 
 class RequestHandlerImpl: RequestHandler {
-    var baseURLString: String
     
-    required init(baseURLString: String) {
+    let baseURLString: String
+    let snakeCaseDecoding: Bool
+    
+    init(baseURLString: String, snakeCaseDecoding: Bool = true) {
         self.baseURLString = baseURLString
+        self.snakeCaseDecoding = snakeCaseDecoding
     }
     
     @discardableResult
@@ -75,7 +78,11 @@ class RequestHandlerImpl: RequestHandler {
             
             // parse the result and map to object
             do {
-                let model = try JSONDecoder().decode(T.self, from: data)
+                let decoder = JSONDecoder()
+                if self.snakeCaseDecoding {
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                }
+                let model = try decoder.decode(T.self, from: data)
                 completion(.success(model))
             } catch  {
                 completion(.error(error))
