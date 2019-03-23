@@ -14,6 +14,7 @@ class PinterestViewController: UIViewController {
     private var posts: [Post] = []
     private var zoomingCell: PinterestImageListCollectionViewCell?
     private var zoominCellOldFrame: CGRect?
+    private var loadingView: RefreshView?
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeButton: UIButton!
@@ -22,7 +23,16 @@ class PinterestViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         addRefreshControl()
-        getData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addLoading()
+        
+        // just added delay because loading animation will appear.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.getData()
+        }
     }
     
     
@@ -67,6 +77,17 @@ class PinterestViewController: UIViewController {
         getData()
     }
     
+    private func addLoading() {
+        if let refreshView = Bundle.main.loadNibNamed("RefreshView", owner: self, options: nil)?.first as? RefreshView {
+            refreshView.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: 100)
+            refreshView.center = collectionView.center
+            refreshView.backgroundColor = .clear
+            view.addSubview(refreshView)
+            refreshView.beginAnimation()
+            loadingView = refreshView
+        }
+    }
+    
     private func getData() {
         do {
             try getPosts(success: { [weak self] (posts) in
@@ -77,6 +98,7 @@ class PinterestViewController: UIViewController {
                         refreshControl.isRefreshing {
                         refreshControl.endRefreshing()
                     }
+                    self?.loadingView?.endAnimation()
                     self?.collectionView.reloadData()
                 }
             }) { [weak self] (error) in
@@ -85,6 +107,7 @@ class PinterestViewController: UIViewController {
                         refreshControl.isRefreshing {
                         refreshControl.endRefreshing()
                     }
+                    self?.loadingView?.endAnimation()
                     self?.showError(error)
                 }
             }
