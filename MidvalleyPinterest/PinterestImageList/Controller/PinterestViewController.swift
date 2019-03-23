@@ -11,10 +11,13 @@ import UIKit
 class PinterestViewController: UIViewController {
     
     var requestHandler: RequestHandler?
-    
-    private weak var collectionView: UICollectionView!
     private var posts: [Post] = []
-
+    private var zoomingCell: PinterestImageListCollectionViewCell?
+    private var zoominCellOldFrame: CGRect?
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var closeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -22,24 +25,25 @@ class PinterestViewController: UIViewController {
         getData()
     }
     
+    
+    @IBAction func closeImagePopup(_ sender: Any) {
+        
+        guard let cell = zoomingCell,
+            let zoominCellOldFrame = zoominCellOldFrame
+            else {return}
+        
+        UIView.animate(withDuration: 0.33, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            cell.frame = zoominCellOldFrame
+            cell.imageView.contentMode = .scaleAspectFill
+            self.collectionView.isScrollEnabled = true
+            self.closeButton.isHidden = true
+        }, completion: {_ in
+            self.zoominCellOldFrame = nil
+            self.zoomingCell = nil
+        })
+    }
+    
     private func setupCollectionView() {
-        // configure layout
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
-        layout.minimumLineSpacing = 12
-        layout.minimumInteritemSpacing = 12
-        
-        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(collectionView)
-        
-        // add constraints
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12).isActive = true
-        
         // add cell
         collectionView.register(UINib(nibName: "PinterestImageListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PinterestImageListCollectionViewCell")
         
@@ -48,9 +52,6 @@ class PinterestViewController: UIViewController {
         collectionView.delegate = self
         
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = .white
-        
-        self.collectionView = collectionView
     }
     
     private func addRefreshControl() {
@@ -119,11 +120,14 @@ extension PinterestViewController: UICollectionViewDataSource {
         }else {
             cell.imageView.image = placeHolderImage
         }
-        configureCell(cell)
+        cell.imageView.contentMode = .scaleAspectFill
+        configureCellUI(cell)
         return cell
     }
     
-    private func configureCell(_ cell: PinterestImageListCollectionViewCell) {
+    private func configureCellUI(_ cell: PinterestImageListCollectionViewCell) {
+        cell.backgroundColor = .white
+        
         cell.imageView.layer.cornerRadius = 20
         let contentView = cell.contentView
         
@@ -133,6 +137,29 @@ extension PinterestViewController: UICollectionViewDataSource {
         contentView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         contentView.layer.shadowRadius = 0.5
         contentView.layer.shadowOpacity = 0.24
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension PinterestViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard zoomingCell == nil, let cell = collectionView.cellForItem(at: indexPath) as? PinterestImageListCollectionViewCell else {return}
+        
+        zoominCellOldFrame = cell.frame
+        
+        cell.superview?.bringSubviewToFront(cell)
+        
+        UIView.animate(withDuration: 0.33, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            cell.frame = collectionView.bounds
+            collectionView.isScrollEnabled = false
+            cell.imageView.contentMode = .scaleAspectFit
+            self.closeButton.isHidden = false
+        }, completion: nil)
+        
+        zoomingCell = cell
     }
     
 }
