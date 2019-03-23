@@ -47,6 +47,7 @@ class RefreshView: UIView {
     
     // MARK: - Animation
     func beginAnimation() {
+        isHidden = false
         addGradientView()
         UIView.animate(
             withDuration: 1.0,
@@ -59,6 +60,7 @@ class RefreshView: UIView {
     }
     
     func endAnimation() {
+        isHidden = true
         gradientView?.layer.removeAllAnimations()
         gradientView = nil
     }
