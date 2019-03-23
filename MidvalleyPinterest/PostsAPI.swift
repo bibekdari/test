@@ -16,7 +16,7 @@ extension PostsAPI {
     
     func getPosts(success: @escaping ([Post]) -> (), failure: @escaping (Error) -> ()) throws {
         let slug = "/raw/wgkJgazE"
-        _ = try requestHandler?.request(slug: slug) { (response: Response<[Post]>) in
+        _ = try requestHandler?.request(slug: slug, parameters: [:], shouldCache: true) { (response: Response<[Post]>) in
             switch response {
             case .error(let error):
                 failure(error)

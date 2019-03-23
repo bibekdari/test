@@ -126,6 +126,7 @@
 				1FF1F30D224507E9005F1FBA /* Request */,
 				1FF1F2EE2243DADF005F1FBA /* PinterestImageList */,
 				1FF1F2BD2243D904005F1FBA /* AppDelegate.swift */,
+				1FF1F3012243FD35005F1FBA /* PostsAPI.swift */,
 				1FF1F2C42243D905005F1FBA /* Assets.xcassets */,
 				1FF1F2C62243D905005F1FBA /* LaunchScreen.storyboard */,
 				1FF1F2C92243D905005F1FBA /* Info.plist */,
@@ -193,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				1FF1F2FB2243F0FF005F1FBA /* RequestHandler.swift */,
-				1FF1F3012243FD35005F1FBA /* PostsAPI.swift */,
 				1FF1F3052244E524005F1FBA /* TaskManager.swift */,
 				1FF1F309224501F4005F1FBA /* CacheManager.swift */,
 			);

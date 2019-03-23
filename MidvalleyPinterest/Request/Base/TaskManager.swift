@@ -42,8 +42,18 @@ class TaskManager {
     }
     
     @discardableResult
-    func request(url: URL, shouldCache: Bool = true, completion: @escaping ((DataResponse) -> ())) -> Task? {
+    func request(urlComponents: URLComponents, parameters: [String: String], shouldCache: Bool = true, completion: @escaping ((DataResponse) -> ())) throws -> Task? {
+        var urlComponents = urlComponents
+        var queryItems = urlComponents.queryItems ?? []
+        parameters.forEach { parameter in
+            queryItems.append(URLQueryItem(name: parameter.key, value: parameter.value))
+        }
+        urlComponents.queryItems = queryItems
+        urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
         
+        guard let url = urlComponents.url else {
+            throw RequestError.cannotCreateURL
+        }
         // return if data is available in cache
         if shouldCache {
             if let data = cacheManager.getDataFromCache(for: url.absoluteString) {
@@ -51,6 +61,8 @@ class TaskManager {
                 return nil
             }
         }
+        
+        print(url.pathComponents)
         
         let urlRequest = URLRequest(url: url)
         

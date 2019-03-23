@@ -36,7 +36,7 @@ enum Response<T: Decodable> {
 protocol RequestHandler {
     var baseURLString: String {get}
     var snakeCaseDecoding: Bool {get}
-    @discardableResult func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> TaskManager.Task?
+    @discardableResult func request<T: Decodable>(slug: String, parameters: [String: String], shouldCache: Bool, completion: @escaping ((Response<T>) -> ())) throws -> TaskManager.Task?
 }
 
 class RequestHandlerImpl: RequestHandler {
@@ -52,14 +52,14 @@ class RequestHandlerImpl: RequestHandler {
     }
     
     @discardableResult
-    func request<T: Decodable>(slug: String, completion: @escaping ((Response<T>) -> ())) throws -> TaskManager.Task? {
+    func request<T: Decodable>(slug: String, parameters: [String: String], shouldCache: Bool, completion: @escaping ((Response<T>) -> ())) throws -> TaskManager.Task? {
         // Set up the URL request
         let endpoint: String = baseURLString + slug
-        guard let url = URL(string: endpoint) else {
+        guard let urlComponents = URLComponents(string: endpoint) else {
             throw RequestError.cannotCreateURL
         }
         
-        return taskManager.request(url: url, completion: { (response) in
+        return try taskManager.request(urlComponents: urlComponents, parameters: parameters, shouldCache: shouldCache, completion: { (response) in
             switch response {
             case .success(let data):
                 // parse the result and map to object
