@@ -47,9 +47,10 @@ class PinterestViewController: UIViewController {
     }
     
     private func addRefreshControl() {
-        let refreshControl = UIRefreshControl()
+        let refreshControl = MindValleyRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refreshControl.backgroundColor = .clear
+        refreshControl.tintColor = .clear
         collectionView.refreshControl = refreshControl
     }
     

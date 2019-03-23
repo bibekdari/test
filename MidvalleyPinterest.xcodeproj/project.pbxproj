@@ -24,6 +24,9 @@
 		1FF1F3062244E524005F1FBA /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F3052244E524005F1FBA /* TaskManager.swift */; };
 		1FF1F30A224501F4005F1FBA /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F309224501F4005F1FBA /* CacheManager.swift */; };
 		1FF1F30C224506CF005F1FBA /* UIImageView+TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F30B224506CF005F1FBA /* UIImageView+TaskManager.swift */; };
+		1FF1F3162245B734005F1FBA /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F3152245B734005F1FBA /* RefreshView.swift */; };
+		1FF1F3182245B73D005F1FBA /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F3172245B73D005F1FBA /* RefreshView.xib */; };
+		1FF1F31A2245BDBC005F1FBA /* MindValleyRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F3192245BDBC005F1FBA /* MindValleyRefreshControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		1FF1F3052244E524005F1FBA /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		1FF1F309224501F4005F1FBA /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		1FF1F30B224506CF005F1FBA /* UIImageView+TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+TaskManager.swift"; sourceTree = "<group>"; };
+		1FF1F3152245B734005F1FBA /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		1FF1F3172245B73D005F1FBA /* RefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
+		1FF1F3192245BDBC005F1FBA /* MindValleyRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindValleyRefreshControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,9 +182,9 @@
 		1FF1F2F12243DADF005F1FBA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FF1F3142245B70B005F1FBA /* RefreshView */,
+				1FF1F3132245B6DA005F1FBA /* CollectionViewCell */,
 				1FF1F2C12243D904005F1FBA /* Pinterest.storyboard */,
-				1FF1F2F62243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift */,
-				1FF1F2F72243DBD0005F1FBA /* PinterestImageListCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +215,25 @@
 				1FF1F30B224506CF005F1FBA /* UIImageView+TaskManager.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		1FF1F3132245B6DA005F1FBA /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1FF1F2F62243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift */,
+				1FF1F2F72243DBD0005F1FBA /* PinterestImageListCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		1FF1F3142245B70B005F1FBA /* RefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				1FF1F3152245B734005F1FBA /* RefreshView.swift */,
+				1FF1F3172245B73D005F1FBA /* RefreshView.xib */,
+				1FF1F3192245BDBC005F1FBA /* MindValleyRefreshControl.swift */,
+			);
+			path = RefreshView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +343,7 @@
 				1FF1F2C82243D905005F1FBA /* LaunchScreen.storyboard in Resources */,
 				1FF1F2F92243DBD0005F1FBA /* PinterestImageListCollectionViewCell.xib in Resources */,
 				1FF1F2C52243D905005F1FBA /* Assets.xcassets in Resources */,
+				1FF1F3182245B73D005F1FBA /* RefreshView.xib in Resources */,
 				1FF1F2C32243D904005F1FBA /* Pinterest.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,8 +375,10 @@
 				1FF1F30C224506CF005F1FBA /* UIImageView+TaskManager.swift in Sources */,
 				1FF1F3022243FD35005F1FBA /* PostsAPI.swift in Sources */,
 				1FF1F3002243FC9A005F1FBA /* User.swift in Sources */,
+				1FF1F3162245B734005F1FBA /* RefreshView.swift in Sources */,
 				1FF1F2F82243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift in Sources */,
 				1FF1F30A224501F4005F1FBA /* CacheManager.swift in Sources */,
+				1FF1F31A2245BDBC005F1FBA /* MindValleyRefreshControl.swift in Sources */,
 				1FF1F2FC2243F0FF005F1FBA /* RequestHandler.swift in Sources */,
 				1FF1F2FE2243FAB6005F1FBA /* Post.swift in Sources */,
 				1FF1F3042244CD35005F1FBA /* PinterestImageListConfigurator.swift in Sources */,
