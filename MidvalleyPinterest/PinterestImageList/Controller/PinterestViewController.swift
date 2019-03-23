@@ -23,20 +23,27 @@ class PinterestViewController: UIViewController {
     }
     
     private func setupCollectionView() {
+        // configure layout
         let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        layout.minimumLineSpacing = 12
+        layout.minimumInteritemSpacing = 12
         
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(collectionView)
         
+        // add constraints
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12).isActive = true
         
+        // add cell
         collectionView.register(UINib(nibName: "PinterestImageListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PinterestImageListCollectionViewCell")
         
+        // set delegate and datasource
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -106,12 +113,26 @@ extension PinterestViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PinterestImageListCollectionViewCell", for: indexPath) as! PinterestImageListCollectionViewCell
         let post = posts[indexPath.row]
-        if let url = URL(string: post.urls.thumb) {
-            cell.imageView.setImage(from: url, placeHolderImage: nil)
+        let placeHolderImage = UIImage(named: "mv-logo-full-white")?.withRenderingMode(.alwaysTemplate)
+        if let url = URL(string: post.urls.small) {
+            cell.imageView.setImage(from: url, placeHolderImage: placeHolderImage)
         }else {
-            cell.imageView.image = nil
+            cell.imageView.image = placeHolderImage
         }
+        configureCell(cell)
         return cell
+    }
+    
+    private func configureCell(_ cell: PinterestImageListCollectionViewCell) {
+        cell.imageView.layer.cornerRadius = 20
+        let contentView = cell.contentView
+        
+        // set shadow
+        contentView.layer.masksToBounds = false
+        contentView.layer.shadowColor = UIColor.black.withAlphaComponent(0.8).cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        contentView.layer.shadowRadius = 0.5
+        contentView.layer.shadowOpacity = 0.24
     }
     
 }
