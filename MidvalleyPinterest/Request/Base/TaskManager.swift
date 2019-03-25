@@ -11,6 +11,24 @@ import Foundation
 enum DataResponse {
     case error(Error)
     case success(Data)
+    
+    var error: Error? {
+        switch self {
+        case .error(let error):
+            return error
+        default:
+            return nil
+        }
+    }
+    
+    var data: Data? {
+        switch self {
+        case .success(let data):
+            return data
+        default:
+            return nil
+        }
+    }
 }
 
 class TaskManager {
