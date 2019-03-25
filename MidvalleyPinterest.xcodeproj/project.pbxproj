@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F72CDB12248DF9900B79C75 /* UIImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72CDB02248DF9900B79C75 /* UIImageViewTests.swift */; };
 		1FF1F2BE2243D904005F1FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2BD2243D904005F1FBA /* AppDelegate.swift */; };
 		1FF1F2C32243D904005F1FBA /* Pinterest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C12243D904005F1FBA /* Pinterest.storyboard */; };
 		1FF1F2C52243D905005F1FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C42243D905005F1FBA /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F72CDB02248DF9900B79C75 /* UIImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewTests.swift; sourceTree = "<group>"; };
 		1FF1F2BA2243D904005F1FBA /* MidvalleyPinterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidvalleyPinterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF1F2BD2243D904005F1FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FF1F2C22243D904005F1FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pinterest.storyboard; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				1FF1F2D22243D905005F1FBA /* MidvalleyPinterestTests.swift */,
 				1FF1F2D42243D905005F1FBA /* Info.plist */,
+				1F72CDB02248DF9900B79C75 /* UIImageViewTests.swift */,
 			);
 			path = MidvalleyPinterestTests;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F72CDB12248DF9900B79C75 /* UIImageViewTests.swift in Sources */,
 				1FF1F2D32243D905005F1FBA /* MidvalleyPinterestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
