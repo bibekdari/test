@@ -33,12 +33,16 @@ class TaskManager {
     
     static let `default` = TaskManager(withCacheManager: CacheManager.default)
     
-    let cacheManager: CacheManager
+    let cacheManager: CacheManager?
     
     private var urlTasks: [URL: [Task]] = [:]
     
-    init(withCacheManager cacheManager: CacheManager) {
+    init(withCacheManager cacheManager: CacheManager?) {
         self.cacheManager = cacheManager
+    }
+    
+    init() {
+        self.cacheManager = nil
     }
     
     @discardableResult
@@ -56,7 +60,7 @@ class TaskManager {
         }
         // return if data is available in cache
         if shouldCache {
-            if let data = cacheManager.getDataFromCache(for: url.absoluteString) {
+            if let data = cacheManager?.getDataFromCache(for: url.absoluteString) {
                 completion(.success(data))
                 return nil
             }
@@ -86,7 +90,7 @@ class TaskManager {
             
             // cache data if needs to be cached
             if shouldCache {
-                self.cacheManager.cache(data: data, forKey: url.absoluteString)
+                self.cacheManager?.cache(data: data, forKey: url.absoluteString)
             }
         }
         dataTask.resume()
@@ -102,7 +106,7 @@ class TaskManager {
         
         // return if data is available in cache
         if shouldCache {
-            if let data = cacheManager.getDataFromCache(for: url.absoluteString) {
+            if let data = cacheManager?.getDataFromCache(for: url.absoluteString) {
                 completion(.success(data))
                 return nil
             }
@@ -137,7 +141,7 @@ class TaskManager {
             
             // cache data if needs to be cached
             if shouldCache {
-                self.cacheManager.cache(data: data, forKey: url.absoluteString)
+                self.cacheManager?.cache(data: data, forKey: url.absoluteString)
             }
         }
         dataTask.resume()
