@@ -8,11 +8,25 @@
 
 import UIKit
 
+private struct Pointers {
+    static var imageDownloadTask: UInt = 0
+}
+
 extension UIImageView {
     
     func setImage(from url: URL, placeHolderImage: UIImage?) {
         self.image = placeHolderImage
-        TaskManager.default.download(url: url) { [weak self] (response) in
+        
+        let oldTask = imageDownloadTask()
+        
+        // proceed if old task url is different than new url
+        guard oldTask?.url != url else {
+            return
+        }
+        
+        oldTask?.cancel()
+        
+        let task = TaskManager.default.download(url: url) { [weak self] (response) in
             switch response {
             case .success(let data):
                 let image = UIImage(data: data)
@@ -22,6 +36,15 @@ extension UIImageView {
             case .error(_): break
             }
         }
+
+        setTask(task: task)
     }
     
+    func imageDownloadTask() -> TaskManager.Task? {
+        return objc_getAssociatedObject(self, &Pointers.imageDownloadTask) as? TaskManager.Task
+    }
+    
+    private func setTask(task: TaskManager.Task?) {
+        objc_setAssociatedObject(self, &Pointers.imageDownloadTask, task, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
 }
