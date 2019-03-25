@@ -107,4 +107,18 @@ class UIImageViewTestCase: XCTestCase {
         XCTAssertNotNil(imageFromCache, "image from cache should not be nil")
     }
     
+    func testThatSameURLImageImageRequestWontReplaceOlderRequest() {
+        
+        let imageView = UIImageView()
+        
+        imageView.setImage(from: url, placeHolderImage: nil)
+        let task1 = imageView.imageDownloadTask()
+        
+        imageView.setImage(from: url, placeHolderImage: nil)
+        let task2 = imageView.imageDownloadTask()
+        
+        XCTAssertTrue(task1?.id == task2?.id, "task1 id and task2 id should be same")
+    }
+    
 }
+
