@@ -73,8 +73,9 @@ class PinterestViewController: UIViewController {
     }
     
     @objc private func refreshData() {
-        posts = []
-        getData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.getData()
+        })
     }
     
     private func addLoading() {
