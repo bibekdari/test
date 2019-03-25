@@ -48,7 +48,7 @@ class UIImageViewTestCase: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        TaskManager.default.cacheManager.emptyCache()
+        TaskManager.default.cacheManager?.emptyCache()
     }
     
     func testThatImageIsDownloadedFromGivenURL() {

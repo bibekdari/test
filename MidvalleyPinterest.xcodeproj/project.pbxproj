@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1F72CDB12248DF9900B79C75 /* UIImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72CDB02248DF9900B79C75 /* UIImageViewTests.swift */; };
+		1F72CDB32248F51C00B79C75 /* TaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72CDB22248F51C00B79C75 /* TaskManagerTests.swift */; };
 		1FF1F2BE2243D904005F1FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2BD2243D904005F1FBA /* AppDelegate.swift */; };
 		1FF1F2C32243D904005F1FBA /* Pinterest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C12243D904005F1FBA /* Pinterest.storyboard */; };
 		1FF1F2C52243D905005F1FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C42243D905005F1FBA /* Assets.xcassets */; };
 		1FF1F2C82243D905005F1FBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF1F2C62243D905005F1FBA /* LaunchScreen.storyboard */; };
-		1FF1F2D32243D905005F1FBA /* MidvalleyPinterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2D22243D905005F1FBA /* MidvalleyPinterestTests.swift */; };
 		1FF1F2DE2243D905005F1FBA /* MidvalleyPinterestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2DD2243D905005F1FBA /* MidvalleyPinterestUITests.swift */; };
 		1FF1F2F32243DADF005F1FBA /* PinterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2F22243DADF005F1FBA /* PinterestViewController.swift */; };
 		1FF1F2F82243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1F2F62243DBD0005F1FBA /* PinterestImageListCollectionViewCell.swift */; };
@@ -49,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		1F72CDB02248DF9900B79C75 /* UIImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewTests.swift; sourceTree = "<group>"; };
+		1F72CDB22248F51C00B79C75 /* TaskManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerTests.swift; sourceTree = "<group>"; };
 		1FF1F2BA2243D904005F1FBA /* MidvalleyPinterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidvalleyPinterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF1F2BD2243D904005F1FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FF1F2C22243D904005F1FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pinterest.storyboard; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		1FF1F2C72243D905005F1FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF1F2C92243D905005F1FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FF1F2CE2243D905005F1FBA /* MidvalleyPinterestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MidvalleyPinterestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FF1F2D22243D905005F1FBA /* MidvalleyPinterestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidvalleyPinterestTests.swift; sourceTree = "<group>"; };
 		1FF1F2D42243D905005F1FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FF1F2D92243D905005F1FBA /* MidvalleyPinterestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MidvalleyPinterestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF1F2DD2243D905005F1FBA /* MidvalleyPinterestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidvalleyPinterestUITests.swift; sourceTree = "<group>"; };
@@ -139,9 +139,9 @@
 		1FF1F2D12243D905005F1FBA /* MidvalleyPinterestTests */ = {
 			isa = PBXGroup;
 			children = (
-				1FF1F2D22243D905005F1FBA /* MidvalleyPinterestTests.swift */,
 				1FF1F2D42243D905005F1FBA /* Info.plist */,
 				1F72CDB02248DF9900B79C75 /* UIImageViewTests.swift */,
+				1F72CDB22248F51C00B79C75 /* TaskManagerTests.swift */,
 			);
 			path = MidvalleyPinterestTests;
 			sourceTree = "<group>";
@@ -392,8 +392,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F72CDB32248F51C00B79C75 /* TaskManagerTests.swift in Sources */,
 				1F72CDB12248DF9900B79C75 /* UIImageViewTests.swift in Sources */,
-				1FF1F2D32243D905005F1FBA /* MidvalleyPinterestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
