@@ -16,7 +16,7 @@ enum DataResponse {
 class TaskManager {
     
     struct Task: Equatable {
-        fileprivate let id: String = UUID().uuidString
+        let id: String = UUID().uuidString
         let url: URL
         fileprivate let taskManager: TaskManager?
         fileprivate let sessionTask: URLSessionTask?
